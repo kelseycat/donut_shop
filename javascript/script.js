@@ -15,8 +15,6 @@ function DonutShop(shopLocation, minCustomers, maxCustomers, avgDonuts, hourlyDo
 DonutShop.prototype.calcHourlyCustomers = function(){
   var hourlyCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
   return hourlyCustomers;
-  // for (var i = 0; i < this.hoursOpen; i++) {
-  //   this.hourlyDonuts.push(Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers) * this.avgDonuts);
 }
 
 DonutShop.prototype.calcHourlyDonuts= function(){
@@ -28,26 +26,40 @@ DonutShop.prototype.calcHourlyDonuts= function(){
   }
 };
 
-//practice method from class
+//render from class
 DonutShop.prototype.generateTable = function () {
-  var tableRow = document.createElement('tr');
-
-  var tableHead = document.createElement('th');
-  tableHead.textContent = this.shopLocation;
-  var table = document.getElementById('donut-table');
-
-  tableRow.appendChild(tableHead);
+  var table           = document.getElementById('donut-table');
+  var shopData        = document.createElement('tr');
+  var tableHead       = document.createElement('th');
+  tableHead.innerHTML = this.shopLocation;
+  shopData.appendChild(tableHead);
 
   for (var i = 0; i < this.hoursOpen; i++){
     var tableData = document.createElement('td');
-    tableData.textContent = this.hourlyDonuts[i];
-    tableRow.appendChild(tableData);
+    tableData.innerHTML = this.hourlyDonuts[i];
+    shopData.appendChild(tableData);
     }
 
   var tableData = document.createElement('td');
-  tableData.textContent = this.totalDailyDonuts;
-  tableRow.appendChild(tableData);
-  table.appendChild(tableRow);
+  tableData.innerHTML = this.totalDailyDonuts;
+  shopData.appendChild(tableData);
+  table.appendChild(shopData);
+
+
+ var addNewLocation = function(event){
+  event.preventDefault();
+  inputLocation = document.getElementById('shop-location');
+  inputMin = parseInt(document.getElementById('min-customers').value);
+  inputMax = parseInt(document.getElementById('max-customers').value);
+  inputAvg = parseFloat(document.getElementById('donut-average').value);
+
+
+  function addNewLocation(store){
+    allShops.push(store);
+  }
+  var buttonClick = document.getElementById('submit-shops');
+  buttonClick.addEventListener('click', addNewLocation);
+ }
 };
 
 //data for all shops
@@ -59,11 +71,14 @@ var ballard   = new DonutShop ('Ballard', 8,  58, 3.75);
 //create an array of all shops
 var allShops = [downtown, capHill, southLU, wedgewood, ballard];
 
-
-
+//populate the table with array data
 for (var i = 0; i < allShops.length; i++){
   allShops[i].calcHourlyDonuts();
   allShops[i].generateTable();
 }
+
+//add event listener
+
+
 
 
