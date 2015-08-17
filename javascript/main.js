@@ -1,103 +1,98 @@
-//redo of script.js to check logic
+// "use strict";
 
-//create a new constructor function
-var DonutShop = function(shopLocation, minCustomers, maxCustomers, avgDonuts, hoursOpen){
-  this.shopLocation    = shopLocation;
-  this.minCustomers    = minCustomers;
-  this.maxCustomers    = maxCustomers;
-  this.avgDonuts       = avgDonuts;
-  this.hoursOpen       = 11;
-  this.hourlyDonutTotal= [ ];
-  this.dailyDonutTotal = 0;
+//constructor
+
+var DonutShop = function (shopLocation, minCustomers, maxCustomers, avgDonuts){
+  this.shopLocation     = shopLocation;
+  this.minCustomers     = minCustomers;
+  this.maxCustomers     = maxCustomers;
+  this.avgDonuts        = avgDonuts;
+  this.hourlyDonuts     = [ ];
+  this.hoursOpen        = 11;
+  this.totalDailyDonuts = 0;
 };
 
-//calculate hourly customers for one location at a time
-DonutShop.protoype.calcHourlyCustomers = function(){
-  for (var i = 0; i < this.hoursOpen; i++){
-    this.hourlyDonutTotal[i].push(Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers);
-  }
+//get random number of cusomters per hour
+DonutShop.prototype.calcHourlyCustomers = function(){
+  var hourlyCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
+  return hourlyCustomers;
 };
 
-//calculate
-DonutShop.protoype.totalHourlyDonuts = function(){
-  for (var i = 0; i < this.hoursOpen; i++) {
+//get total donut estimate for every hourlyDonuts
+DonutShop.prototype.calcHourlyDonuts = function(){
+  for(var i = 0; i < this.hoursOpen; i++){
     var hourlyCustomers = this.calcHourlyCustomers();
-    var donutsEachHour = Math.round(hourlyCustomers * this.avgDonuts);
-    this.hourlyDonutTotal.push(donutsEachHour);
-    this.dailyDonutTotal += donutsEachHour;
+    var donutsHourTotal = Math.round(hourlyCustomers * this.avgDonuts);
+    this.hourlyDonuts.push(donutsHourTotal);
+    this.totalDailyDonuts += donutsHourTotal;
   }
 };
 
-
-//render into table
-DonutShop.protoype.render = function(){
-  var tableRow    = document.createElement('tr');
-  tableRow.setAttribute('id', this.shopLocation);
-  var tableHead = document.createElement('th');
-  var table = document.getElementById('donut-table');
-  tableHead.textContent = this.storeLocation;
+//render to the table
+DonutShop.prototype.generateTable = function(){
+  var table        = document.getElementById('donut-table');
+  var tableRow     = document.createElement('tr');
+  var tableHead    = document.createElement('th');
+  tableHead.innerHTML = this.shopLocation;
   tableRow.appendChild(tableHead);
 
-  for (var i =0; i < this.hoursOpen; i++){
-    var tableCell = document.createElement('td');
-    tableCell.textContent = this.hourlyDonutTotal[i];
-    tableRow.appendChild(tableCell);
-  }
+  //add numbers to td
+  for (var i = 0; i < this.hoursOpen; i++) {
+     tableData = document.createElement('td');
+     tableData.innerHTML = this.hourlyDonuts[i];
+     tableRow.appendChild(tableData);
+    }
 
-  var tableCell = document.createElement('td');
-  tableCell.textContent = this.dailyDonutTotal;
-
-  tableRow.appendChild(tableCell);
+  var tableData = document.createElement('td');
+  tableData.innerHTML = this.totalDailyDonuts;
+  tableRow.appendChild(tableData);
   table.appendChild(tableRow);
+
+  var addNewLocation = function(event){
+    event.preventDefault();
+    inputLocation = document.getElementById('shop-location');
+    inputMin      = parseInt(document.getElementById('min-customers').value);
+    inputMax      = parseInt(document.getElementById('max-customers').value);
+    inputAvg      = parseFloat(document.getElementById('donut-average').value);
+
+  function addLocationData(store){
+    allShops.push(store);
+  }
+  shopData.id        = this.shopLocation;
+  shopData.innerHTML = this.shopLocation;
+  table.appendChild(shopData);
+  };
+};
+
+//create and array of all locations
+var allShops = [ ];
+//new instances for all the locations
+var downtown  = new DonutShop ('Downtown', 8, 43, 4.50);
+var capHill   = new DonutShop ('Capitol Hill', 4, 37, 2.00);
+var southLU   = new DonutShop ('South Lake Union', 9, 23, 6.33);
+var wedgewood = new DonutShop ('Wedgewood', 2, 28, 1.25);
+var ballard   = new DonutShop ('Ballard', 8,  58, 3.75);
+
+//put into an array
+var allShops = [downtown, capHill, southLU, wedgewood, ballard];
+
+//populate the table with array data
+for (var i = 0; i < allShops.length; i++){
+  allShops[i].calcHourlyDonuts();
+  allShops[i].generateTable();
 };
 
 
-//create an array of all shops
-var allShops = [ ];
+  var submitShopInfo = function(){
+    var donutForm        = document.getElementById('donut-form');
+    var userLocation     = document.getElementById('shop-location');
+    var userMinCustomers = parseInt(document.getElementById('min-customers'));
+    var userMaxCustomers = parseInt(document.getElementById('max-customers'));
+    var userAvgDonuts    = parseInt(document.getElementById('donut-average'));
+    var userDonutShop    = new DonutShop(userLocation, userMinCustomers, userMaxCustomers, userAvgDonuts);
+    userDonutShop.generateTable();
+  };
 
-//data for all shops
-allShops.push(new DonutShop ('Downtown', 8, 43, 4.50));
-allShops.push(new DonutShop ('Capitol Hill', 4, 37, 2.00));
-allShops.push(new DonutShop ('South Lake Union', 9, 23, 6.33));
-allShops.push(new DonutShop ('Wedgewood', 2, 28, 1.25));
-allShops.push(new DonutShop ('Ballard', 8,  58, 3.75));
+var submitButton = document.getElementById('submit-shops');
+submitButton.addEventListener('click', submitShopInfo);
 
-DonutShop.render();
-
-
-// Shop.prototype.makeTable  = function(){
-//     var tr  = document.createElement('tr');
-//     tr.setAttribute("id", this.storeLocation)
-//     var th  = document.createElement('th');
-//     //gets  table element   in  HTML  to  attach  the new elements  to
-//     var tbl = document.getElementById('table');
-//     //insert  store location  into  the new row
-//     th.textContent  = this.storeLocation;
-//     //  th.setAttribute('class',  this.storeLocation);
-//     tr.appendChild(th);
-//     //  loop  to  insert  hourly  donuts  into  table
-//     for (var  i = 0;  i < this.hours; i++){
-//         var td  = document.createElement('td');
-//         td.textContent  = this.hourlyDonuts[i];
-//         //  td.setAttribute('class',  this.storeLocation);
-//         tr.appendChild(td);
-//     }
-//     //insert  daily donuts  total into  table
-//     var td  = document.createElement('td');
-//     td.textContent  = this.dailyDonuts;
-//     //  td.setAttribute('class',  this.storeLocation);
-//     tr.appendChild(td);
-//     //add the new row to  the table
-//     tbl.appendChild(tr);
-// };
-// var locationArray = [];
-// //create  instances of  each  donut shop
-// locationArray.push(new  Shop("Downtown",  8,  43, 4.5));
-// locationArray.push(new  Shop("Capital Hill",  4,  37, 2));
-// locationArray.push(new  Shop("South Lake  Union", 9,  23, 6.33));
-// locationArray.push(new  Shop("Wedgewood", 2,  28, 1,25));
-// locationArray.push(new  Shop("Ballard", 8,  58, 3.75));
-// //call  method  that  adds  data  to  table for each  store location  the first time
-// for (var  i = 0;  i < locationArray.length; i++){
-//     locationArray[i].calculateHourlyDonuts();
-//     locationArray[i].makeTable();
