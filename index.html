@@ -1,46 +1,128 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
   <title>Donut Shop</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
+  <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+
+  <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+
+  <link href="images/donut_icon.ico" rel="icon" type="image/x-icon"/>
 </head>
 
 
-<body>
+<body><!--begin html body-->
 
-<h1>Tracking Donut Sales:</h1>
-<p>Top Pot needs our help. Estimate what the sales will be at every location for every hour they are open.</p>
+  <header>
+    <ul>
+      <li><a href="/">Code</a></li>
+      <li><a href="/">Coffee</a></li>
+      <li><a href="/">Donuts</a></li>
+    </ul>
 
-<table id="donut-table" border="1 px solid black">
-  <th>
-    <td>7am</td>
-    <td>8am</td>
-    <td>9am</td>
-    <td>10am</td>
-    <td>11am</td>
-    <td>12pm</td>
-    <td>1pm</td>
-    <td>2pm</td>
-    <td>3pm</td>
-    <td>4pm</td>
-    <td>5pm</td>
-    <td>6pm</td>
-  </th>
+    <h1>Donut Party</h1>
+  </header>
 
-  <tr>
-    <td>
-  </tr>
+<div class="wrapper">
 
-</table><!--end donut-table-->
+<div class="col-wrapper">
+  <div class="column">
+    <h2>About</h2>
 
-<form>
-  <input type="submit" value="Add Location">
-  <input type="submit" value="Reset Inputs">
-</form>
+    <img src="images/kitty_donut.jpg" height="200px" width="200px">
 
-<script type="text/javascript" src="javascript/script.js">
+    <p>Carles wayfarers disrupt gentrify, cornhole chia selvage 8-bit DIY. Marfa chia tote bag keytar 8-bit, DIY ethical asymmetrical banjo gluten-free freegan deep v. Semiotics put a bird on it twee, whatever salvia pickled bicycle rights pug Kickstarter. Tattooed yr tofu, ugh tote bag hashtag kitsch aesthetic photo booth leggings forage put a bird on it organic irony. 90's health goth listicle, occupy butcher fashion axe banh mi Intelligentsia synth biodiesel. </p>
+  </div><!--end left col-->
 
+  <div class="column">
+    <h2>Donuts</h2>
+
+    <img src="images/marnie_donuts.jpg" height="200px" width="200px">
+
+    <p>Wes Anderson readymade pork belly. 3 wolf moon post-ironic beard 90's mumblecore, normcore kitsch wayfarers lumbersexual. Distillery shabby chic PBR, Bushwick cray bespoke hashtag deep v Etsy flannel squid disrupt biodiesel. Mustache swag art party selvage DIY. Selvage banh mi Odd Future drinking vinegar polaroid PBR. Organic cred narwhal paleo semiotics. PBR post-ironic retro four loko, ugh Tumblr Pinterest jean shorts butcher mustache tofu Neutra bicycle rights Thundercats.</p>
+  </div><!--end center col-->
+
+  <div class="column">
+    <h2>Kittens</h2>
+
+    <img src="images/party_hat.jpg" height="200px" width="200px">
+
+    <p>Odd Future raw denim PBR&B, seitan aesthetic literally artisan locavore deep v wayfarers Pinterest mustache photo booth. Forage Austin Pinterest typewriter organic fanny pack. Etsy taxidermy keytar, actually Banksy small batch Wes Anderson irony occupy Pinterest health goth Neutra. Banh mi trust fund heirloom, Truffaut Tumblr fingerstache beard small batch retro pork belly. Food truck sartorial deep v, lo-fi before they sold out listicle mustache polaroid. Art party single-origin coffee leggings locavore sriracha.
+    </p>
+  </div><!--end right col-->
+</div><!-- end col-wrapper-->
+
+  <div class="table-wrap">
+    <table id="donut-table">
+      <thead>
+        <tr>
+          <th id="table-title" colspan="13">Top Pot Locations and Hours</th>
+        </tr>
+        <th class="hour-titles">
+          <td>7:00 am</td>
+          <td>8:00 am</td>
+          <td>9:00 am</td>
+          <td>10:00 am</td>
+          <td>11:00 am</td>
+          <td>12:00 pm</td>
+          <td>1:00 pm</td>
+          <td>2:00 pm</td>
+          <td>3:00 pm</td>
+          <td>4:00 pm</td>
+          <td>5:00 pm</td>
+          <td>Daily Total</td>
+        </th>
+      </thead>
+
+    </table><!--end donut-table-->
+  </div><!--end table wrap-->
+
+<div class="input-form">
+  <form id="donut-form">
+    <ul class="input-list">
+      <li> Location:
+        <input id="shop-location" type="text" value="" name="new location"></input>
+      </li>
+
+      <li> Minimum Customers per Hour:
+        <input id="min-customers" type="text" value="" name="min customers"></input>
+      </li>
+
+      <li> Maximum Customers per Hour:
+      <input id="max-customers" type="text" value="" name="max customers"></input>
+      </li>
+
+      <li> Average Donuts per Customer:
+      <input id="donut-average" type="text" value="" name="avg donuts"></input>
+      </li>
+
+      <li>
+      <input id="submit-shops" type="submit" value="Add Location">
+      </li>
+   </ul>
+  </form>
+  </div><!--end input form-->
+
+</div><!--end wrapper-->
+
+<footer class="sticky-footer clearfix">
+  <ul>
+    <li><a href="#">Github</a></li>
+    <li><a href="">LinkedIn</a></li>
+    <li>Contact Me</li>
+    <li><a href="">Email</a></li>
+    <li><a href="">Twitter</a></li>
+  </ul>
+</footer>
+
+<script type="text/javascript" src="javascript/main.js">
 </script>
 
 </body>
+
 </html>
