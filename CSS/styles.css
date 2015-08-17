@@ -1,0 +1,259 @@
+/* #### TABLE of CONTENTS #####
+
+  # Color Palette
+  # Font List
+  # Overall styles and header
+  #
+  # Footer
+*/
+
+/* ######Colors!#########
+  EF6CCD bright pink
+  A786CF bright purple
+  e5d1fa pale purple
+  391D2B dark purple
+  8C698F medium purple
+  FFFFFF white
+*/
+
+/*##########Fonts#######
+  Arimo (google)
+  Quicksand , Quicksand Bold (google)
+  Alegraya (google)
+*/
+
+
+/* ###### general styles and header #### */
+
+body{
+  height: 100%;
+  font-family: 'Alegraya', serif;
+  /*width: 100%;*/
+}
+
+h1{
+  font-family: 'Quicksand', sans-serif;;
+  font-weight: bold;
+  color: #fff;
+}
+
+h2{
+  font-family: 'Arimo', sans-serif;
+  color: #391D2B;
+  padding: 0;
+}
+
+header{
+  width: 100%;
+  min-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(229, 209, 250, 0.95);
+  box-shadow: 0px 3px 10px -6px rgba(140,105,143,0.65);
+  position: fixed;
+  top: 0;
+}
+
+header h1{
+  animation-name: crazyFade;
+  animation-duration: .5s;
+  animation-delay: .1s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
+  animation-direction: left;
+}
+@keyframes crazyFade{
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+header > ul > li{
+  font-family: 'Quicksand', sans-serif;
+  display: inline-block;
+  float: right;
+  padding: 18px 50px 30px 0px;
+}
+
+header > ul > li >a{
+  text-decoration: none;
+  color: #391D2B;
+}
+
+header > ul > li >a:visited{
+  text-decoration: none;
+  color: #391D2B;
+}
+
+header > ul > li >a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+
+header > h1{
+  padding-left: 30px;
+  font-size: 2.2em;
+  line-height: 1.2em;
+}
+
+/* #### main content ###### */
+.wrapper{
+  padding-left: 30px;
+  padding-right: 30px;
+  min-height: 100%;
+  max-width: 1200px;
+  min-width: 600px;
+  margin-bottom: -75px;
+  margin-top: 120px;
+  background-color: #FFF;
+}
+
+.main img{
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  visibility: hidden;
+}
+
+/*#### columns ##### */
+.col-wrapper{
+  max-width: 1000px;
+  min-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0,0,0,.9);
+}
+
+.col-wrapper img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6%;
+  /*border: 1px solid #e5d1fa;*/
+}
+
+.col-wrapper h2{
+  text-align: center;
+  line-height: 1em;
+  color: #EF6CCD;
+}
+
+.column{
+  float: left;
+  width: 33%;
+  max-height: 600px;
+  overflow: auto;
+/*  border: 1px solid #A786CF;*/
+}
+
+.column p{
+  padding: 0 20px 0;
+  text-align: left;
+}
+
+
+/* ####### style the table and inputs ##### */
+table{
+  color: #8C698F;
+  font-family: 'Arimo', Tahoma, sans-serif;
+  font-variant: small-caps;
+}
+
+thead{
+  color: #391D2B;
+}
+
+.table-wrap{
+  max-width: 800px;
+  min-height: 600px;
+}
+
+table th{
+  font-family: 'Quicksand', Tahoma, sans-serif;
+  color: #391D2B;
+  padding-right: 10px;
+}
+
+#table-title{
+  padding: 0 auto 10px auto;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  color: #EF6CCD;
+}
+
+td{
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #e5d1fa;
+}
+
+
+/* ###### user inputs and button styles######### */
+.input-list li{
+  display: inline;
+  font-family: 'Arimo', Tahoma, sans-serif;
+  text-decoration: none;
+}
+
+
+/*##### stick footer to bottom #### */
+.wrapper:after{
+  content: "";
+  display: block;
+}
+
+.sticky-footer, .wrapper:after{
+  height: 75px;
+}
+
+/* #### style the footer #### */
+.sticky-footer{
+  clear: both;
+  position: absolute;
+  background-color: #391D2B;
+  height: 75px;
+  width: 100%;
+  text-align: center;
+}
+
+footer > ul > li{
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+footer ul li a{
+  color: #e5d1fa;
+  text-decoration: none;
+}
+
+footer ul li a:visited{
+  color: #e5d1fa;
+  text-decoration: none;
+}
+ footer ul li a:hover{
+  color: #8C698F;
+  text-decoration: none;
+ }
+
+/* #### clearfix #####*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  }
+
+/* #### animations ####### */
+
+
