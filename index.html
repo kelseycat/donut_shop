@@ -29,6 +29,62 @@
   </header>
 
 <div class="wrapper">
+    <div class="center-title">
+      <img class="left" src="images/sprinkles.png">
+    <h2 id="title">Donut Sales Estimator</h2>
+    <!-- <p>Odd Future squid four dollar toast locavore pop-up master cleanse Austin Echo Park blog. Art party fashion axe twee gluten-free salvia vegan. Irony butcher freegan, flexitarian chillwave yr McSweeney's DIY American Apparel Brooklyn mumblecore.</p> -->
+    </div><!--end center title-->
+
+<div class="table-and-input">
+    <div class="table-wrap">
+      <table id="donut-table">
+        <thead>
+          <tr>
+            <th id="table-title" colspan="13">Top Pot Locations and Hours</th>
+          </tr>
+          <th class="hour-titles">
+            <td>7:00 am</td>
+            <td>8:00 am</td>
+            <td>9:00 am</td>
+            <td>10:00 am</td>
+            <td>11:00 am</td>
+            <td>12:00 pm</td>
+            <td>1:00 pm</td>
+            <td>2:00 pm</td>
+            <td>3:00 pm</td>
+            <td>4:00 pm</td>
+            <td>5:00 pm</td>
+            <td>Daily Total</td>
+          </th>
+        </thead>
+      </table><!--end donut-table-->
+    </div><!--end table wrap-->
+
+  <div class="input-form">
+    <form id="donut-form">
+      <fieldset class="input-list">
+        <legend class="list-title">Update the Table</legend>
+        <label>Location:</label>
+          <br>
+          <input id="shop-location" type="text" placeholder="Queen Anne" name="new location"></input>
+          <br>
+        <label> Min. per Hour:</label>
+        <br>
+          <input id="min-customers" type="text" placeholder="2" name="min customers"></input>
+          <br>
+        <label> Max. per Hour: </label>
+        <br>
+        <input id="max-customers" type="text"  placeholder="8" name="max customers"></input>
+          <br>
+        <label> Average per Customer: </label>
+        <br>
+        <input id="donut-average" type="text" placeholder="3.5" name="avg donuts"></input>
+          <br>
+        <input id="submit-shops" type="submit" value="Add Location">
+     </fieldset><!-- end input-list-->
+    </form>
+    </div><!--end input form-->
+  </div><!-- end table and input-->
 
 <div class="col-wrapper">
   <div class="column">
@@ -56,57 +112,6 @@
     </p>
   </div><!--end right col-->
 </div><!-- end col-wrapper-->
-
-  <div class="table-wrap">
-    <table id="donut-table">
-      <thead>
-        <tr>
-          <th id="table-title" colspan="13">Top Pot Locations and Hours</th>
-        </tr>
-        <th class="hour-titles">
-          <td>7:00 am</td>
-          <td>8:00 am</td>
-          <td>9:00 am</td>
-          <td>10:00 am</td>
-          <td>11:00 am</td>
-          <td>12:00 pm</td>
-          <td>1:00 pm</td>
-          <td>2:00 pm</td>
-          <td>3:00 pm</td>
-          <td>4:00 pm</td>
-          <td>5:00 pm</td>
-          <td>Daily Total</td>
-        </th>
-      </thead>
-
-    </table><!--end donut-table-->
-  </div><!--end table wrap-->
-
-<div class="input-form">
-  <form id="donut-form">
-    <ul class="input-list">
-      <li> Location:
-        <input id="shop-location" type="text" value="" name="new location"></input>
-      </li>
-
-      <li> Minimum Customers per Hour:
-        <input id="min-customers" type="text" value="" name="min customers"></input>
-      </li>
-
-      <li> Maximum Customers per Hour:
-      <input id="max-customers" type="text" value="" name="max customers"></input>
-      </li>
-
-      <li> Average Donuts per Customer:
-      <input id="donut-average" type="text" value="" name="avg donuts"></input>
-      </li>
-
-      <li>
-      <input id="submit-shops" type="submit" value="Add Location">
-      </li>
-   </ul>
-  </form>
-  </div><!--end input form-->
 
 </div><!--end wrapper-->
 
