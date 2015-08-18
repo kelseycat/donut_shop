@@ -54,7 +54,7 @@ var allShops = [ ];
 allShops.push(downtown = new DonutShop ('Downtown', 8, 43, 4.50));
 allShops.push(capHill  = new DonutShop ('Capitol Hill', 4, 37, 2.00));
 allShops.push(southLU  = new DonutShop ('South Lake Union', 9, 23, 6.33));
-allShops.push(wedgewood =new DonutShop ('Wedgewood', 2, 28, 1.25));
+allShops.push(wedgewood= new DonutShop ('Wedgewood', 2, 28, 1.25));
 allShops.push(ballard  = new DonutShop ('Ballard', 8,  58, 3.75));
 
 //populate the table with array data
